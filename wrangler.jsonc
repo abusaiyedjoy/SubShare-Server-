@@ -1,0 +1,24 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "subshare-backend",
+	"main": "src/server.ts",
+	"compatibility_date": "2026-01-04",
+	"compatibility_flags": ["nodejs_compat"],
+	"dev": {
+		"port": 8080,
+		"local_protocol": "http"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "subshare-db",
+			"database_id": "f3e69b4e-f890-4af3-8c23-a0f97a1af5fe"
+		}
+	],
+	"vars": {
+		"JWT_SECRET": "your-super-secret-jwt-key-change-in-production",
+		"ADMIN_COMMISSION_PERCENTAGE": "10",
+		"JWT_EXPIRY": "24h",
+		"ENCRYPTION_KEY": "your-32-character-encryption-key-here-change-in-prod"
+	}
+}
