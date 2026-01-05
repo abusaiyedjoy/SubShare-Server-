@@ -5,10 +5,9 @@ export class EncryptionService {
     this.key = key;
   }
 
-  /**
-   * Simple XOR-based encryption (for demo purposes)
-   * In production, use proper encryption like AES
-   */
+// Simple XOR-based encryption (for demo purposes)
+   // In production, use proper encryption like AES
+
   encrypt(text: string): string {
     let encrypted = '';
     for (let i = 0; i < text.length; i++) {
@@ -28,9 +27,7 @@ export class EncryptionService {
     return decrypted;
   }
 
-  /**
-   * Encrypt credentials object
-   */
+  // Encrypt credentials object
   encryptCredentials(username: string, password: string): { 
     encryptedUsername: string; 
     encryptedPassword: string;
@@ -41,9 +38,7 @@ export class EncryptionService {
     };
   }
 
-  /**
-   * Decrypt credentials object
-   */
+  // Decrypt credentials object
   decryptCredentials(encryptedUsername: string, encryptedPassword: string): { 
     username: string; 
     password: string;

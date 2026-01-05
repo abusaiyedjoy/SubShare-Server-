@@ -6,9 +6,6 @@ import { calculateAccessEndTime } from '../../utils/time';
 export class AccessService {
   constructor(private db: Database) {}
 
-  /**
-   * Check if user has active access to a subscription
-   */
   async hasActiveAccess(userId: number, sharedSubscriptionId: number): Promise<boolean> {
     const now = new Date();
     const [access] = await this.db
@@ -26,9 +23,6 @@ export class AccessService {
     return !!access;
   }
 
-  /**
-   * Get active access for user and subscription
-   */
   async getActiveAccess(userId: number, sharedSubscriptionId: number) {
     const now = new Date();
     const [access] = await this.db
@@ -46,9 +40,6 @@ export class AccessService {
     return access || null;
   }
 
-  /**
-   * Create access record
-   */
   async createAccess(
     userId: number,
     sharedSubscriptionId: number,
@@ -82,9 +73,6 @@ export class AccessService {
     return access;
   }
 
-  /**
-   * Get credentials if user has access
-   */
   async getCredentials(userId: number, sharedSubscriptionId: number) {
     // Check if user has active access
     const hasAccess = await this.hasActiveAccess(userId, sharedSubscriptionId);
@@ -115,9 +103,7 @@ export class AccessService {
     return subscription;
   }
 
-  /**
-   * Update expired accesses
-   */
+
   async updateExpiredAccesses() {
     const now = Math.floor(Date.now() / 1000);
 
@@ -132,9 +118,7 @@ export class AccessService {
       );
   }
 
-  /**
-   * Cancel access
-   */
+
   async cancelAccess(accessId: number, userId: number) {
     const [access] = await this.db
       .select()

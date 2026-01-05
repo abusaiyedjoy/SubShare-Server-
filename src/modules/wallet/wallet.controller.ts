@@ -7,9 +7,6 @@ import { Env } from '../../db';
 export class WalletController {
   constructor(private walletService: WalletService) {}
 
-  /**
-   * Create topup request
-   */
   createTopupRequest = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -28,9 +25,6 @@ export class WalletController {
     }
   };
 
-  /**
-   * Get user's topup requests
-   */
   getUserTopupRequests = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -43,9 +37,6 @@ export class WalletController {
     }
   };
 
-  /**
-   * Get specific topup request
-   */
   getTopupRequestById = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -58,9 +49,7 @@ export class WalletController {
     }
   };
 
-  /**
-   * Cancel topup request
-   */
+
   cancelTopupRequest = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -73,9 +62,7 @@ export class WalletController {
     }
   };
 
-  /**
-   * Get all topup requests (admin)
-   */
+
   getAllTopupRequests = async (c: Context<{ Bindings: Env }>) => {
     try {
       const status = c.req.query('status');
@@ -88,9 +75,6 @@ export class WalletController {
     }
   };
 
-  /**
-   * Approve topup request (admin)
-   */
   approveTopupRequest = async (c: Context<{ Bindings: Env }>) => {
     try {
       const admin = getAuthUser(c);
@@ -109,9 +93,6 @@ export class WalletController {
     }
   };
 
-  /**
-   * Reject topup request (admin)
-   */
   rejectTopupRequest = async (c: Context<{ Bindings: Env }>) => {
     try {
       const admin = getAuthUser(c);

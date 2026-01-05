@@ -7,6 +7,8 @@ import { createUsersRoutes } from './modules/users/users.routes';
 import { createWalletRoutes } from './modules/wallet/wallet.routes';
 import { createPlatformsRoutes } from './modules/platforms/platforms.routes';
 import { createSubscriptionsRoutes } from './modules/subscriptions/subscriptions.routes';
+import { createReportsRoutes } from './modules/reports/reports.routes';
+import { createAdminRoutes } from './modules/admin/admin.routes';
 
 export function createApp() {
   const app = new Hono<{ Bindings: Env }>();
@@ -37,6 +39,8 @@ export function createApp() {
   app.route('/api/wallet', createWalletRoutes());
   app.route('/api/platforms', createPlatformsRoutes());
   app.route('/api/subscriptions', createSubscriptionsRoutes());
+   app.route('/api/reports', createReportsRoutes());
+  app.route('/api/admin', createAdminRoutes());
 
   // 404 handler
   app.notFound((c) => {

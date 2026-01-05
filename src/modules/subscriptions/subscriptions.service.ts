@@ -31,9 +31,7 @@ export class SubscriptionsService {
     private commissionPercentage: number
   ) {}
 
-  /**
-   * Get all shared subscriptions with filters
-   */
+
   async getAllSubscriptions(filters?: {
     platformId?: number;
     verifiedOnly?: boolean;
@@ -78,9 +76,7 @@ export class SubscriptionsService {
     return subscriptions;
   }
 
-  /**
-   * Get subscription by ID
-   */
+
   async getSubscriptionById(subscriptionId: number) {
     const [subscription] = await this.db
       .select({
@@ -114,9 +110,7 @@ export class SubscriptionsService {
     return subscription;
   }
 
-  /**
-   * Create shared subscription
-   */
+
   async createSharedSubscription(params: CreateSharedSubscriptionParams) {
     // Verify platform exists and is active
     const [platform] = await this.db
@@ -157,9 +151,7 @@ export class SubscriptionsService {
     return subscription;
   }
 
-  /**
-   * Update shared subscription
-   */
+
   async updateSharedSubscription(
     subscriptionId: number,
     userId: number,
@@ -214,9 +206,6 @@ export class SubscriptionsService {
     return updated;
   }
 
-  /**
-   * Delete shared subscription
-   */
   async deleteSharedSubscription(subscriptionId: number, userId: number) {
     const [subscription] = await this.db
       .select()
@@ -241,9 +230,6 @@ export class SubscriptionsService {
     return { message: 'Subscription deleted successfully' };
   }
 
-  /**
-   * Unlock/Purchase subscription access
-   */
   async unlockSubscription(subscriptionId: number, userId: number, hours: number) {
     // Get subscription details
     const [subscription] = await this.db
@@ -274,7 +260,6 @@ export class SubscriptionsService {
       throw new Error('You already have active access to this subscription');
     }
 
-    // Calculate total price
     const totalPrice = subscription.price_per_hour * hours;
 
     // Check user balance
@@ -343,9 +328,6 @@ export class SubscriptionsService {
     };
   }
 
-  /**
-   * Get credentials (if user has access)
-   */
   async getCredentials(subscriptionId: number, userId: number) {
     const subscription = await this.accessService.getCredentials(userId, subscriptionId);
 

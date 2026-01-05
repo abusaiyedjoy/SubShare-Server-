@@ -6,9 +6,7 @@ export interface CommissionCalculation {
 }
 
 export class CommissionService {
-  /**
-   * Calculate commission from an amount
-   */
+
   static calculateCommission(
     amount: number,
     commissionPercentage: number
@@ -24,9 +22,7 @@ export class CommissionService {
     };
   }
 
-  /**
-   * Calculate earnings for subscription owner
-   */
+
   static calculateOwnerEarnings(
     totalAmount: number,
     commissionPercentage: number
@@ -35,9 +31,7 @@ export class CommissionService {
     return calculation.netAmount;
   }
 
-  /**
-   * Calculate admin commission
-   */
+
   static calculateAdminCommission(
     totalAmount: number,
     commissionPercentage: number
@@ -46,9 +40,7 @@ export class CommissionService {
     return calculation.commissionAmount;
   }
 
-  /**
-   * Split payment between owner and admin
-   */
+
   static splitPayment(
     totalAmount: number,
     commissionPercentage: number

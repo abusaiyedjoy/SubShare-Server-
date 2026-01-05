@@ -7,9 +7,7 @@ import { Env } from '../../db';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  /**
-   * Get user profile
-   */
+
   getProfile = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -20,9 +18,6 @@ export class UsersController {
     }
   };
 
-  /**
-   * Update user profile
-   */
   updateProfile = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -34,9 +29,7 @@ export class UsersController {
     }
   };
 
-  /**
-   * Update password
-   */
+
   updatePassword = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -52,9 +45,6 @@ export class UsersController {
     }
   };
 
-  /**
-   * Get wallet balance
-   */
   getWalletBalance = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -65,9 +55,7 @@ export class UsersController {
     }
   };
 
-  /**
-   * Get wallet transactions
-   */
+
   getWalletTransactions = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -79,9 +67,7 @@ export class UsersController {
     }
   };
 
-  /**
-   * Get user's active subscriptions
-   */
+
   getMySubscriptions = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -92,9 +78,7 @@ export class UsersController {
     }
   };
 
-  /**
-   * Get subscriptions shared by user
-   */
+
   getSharedSubscriptions = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -105,9 +89,7 @@ export class UsersController {
     }
   };
 
-  /**
-   * Get user statistics
-   */
+
   getUserStats = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);

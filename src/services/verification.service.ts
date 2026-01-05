@@ -5,9 +5,7 @@ import { sharedSubscriptions, subscriptionPlatforms } from '../db/schema';
 export class VerificationService {
   constructor(private db: Database) {}
 
-  /**
-   * Verify a shared subscription
-   */
+
   async verifySubscription(
     subscriptionId: number,
     adminId: number,
@@ -24,9 +22,6 @@ export class VerificationService {
       .where(eq(sharedSubscriptions.id, subscriptionId));
   }
 
-  /**
-   * Get pending subscription verifications
-   */
   async getPendingVerifications() {
     return await this.db
       .select({
@@ -47,9 +42,6 @@ export class VerificationService {
       .where(eq(sharedSubscriptions.is_verified, false));
   }
 
-  /**
-   * Verify a platform
-   */
   async verifyPlatform(platformId: number, isActive: boolean): Promise<void> {
     await this.db
       .update(subscriptionPlatforms)
@@ -60,9 +52,7 @@ export class VerificationService {
       .where(eq(subscriptionPlatforms.id, platformId));
   }
 
-  /**
-   * Get subscription details for verification
-   */
+
   async getSubscriptionForVerification(subscriptionId: number) {
     const [subscription] = await this.db
       .select({

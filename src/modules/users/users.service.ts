@@ -6,9 +6,6 @@ import { hashPassword, verifyPassword } from '../../utils/hash';
 export class UsersService {
   constructor(private db: Database) {}
 
-  /**
-   * Get user profile
-   */
   async getUserProfile(userId: number) {
     const [user] = await this.db
       .select({
@@ -30,9 +27,7 @@ export class UsersService {
     return user;
   }
 
-  /**
-   * Update user profile
-   */
+
   async updateProfile(userId: number, data: { name?: string }) {
     if (!data.name) {
       throw new Error('No data to update');
@@ -56,9 +51,6 @@ export class UsersService {
     return updatedUser;
   }
 
-  /**
-   * Update user password
-   */
   async updatePassword(
     userId: number,
     currentPassword: string,
@@ -95,9 +87,6 @@ export class UsersService {
     return { message: 'Password updated successfully' };
   }
 
-  /**
-   * Get wallet balance
-   */
   async getWalletBalance(userId: number) {
     const [user] = await this.db
       .select({
@@ -113,9 +102,6 @@ export class UsersService {
     return { balance: user.balance };
   }
 
-  /**
-   * Get wallet transactions
-   */
   async getWalletTransactions(userId: number, limit: number = 50) {
     const userTransactions = await this.db
       .select({
@@ -137,9 +123,6 @@ export class UsersService {
     return userTransactions;
   }
 
-  /**
-   * Get user's active subscriptions (purchased access)
-   */
   async getMySubscriptions(userId: number) {
     const activeSubscriptions = await this.db
       .select({
@@ -167,9 +150,6 @@ export class UsersService {
     return activeSubscriptions;
   }
 
-  /**
-   * Get subscriptions shared by user
-   */
   async getSharedSubscriptions(userId: number) {
     const sharedSubs = await this.db
       .select({
@@ -191,9 +171,6 @@ export class UsersService {
     return sharedSubs;
   }
 
-  /**
-   * Get user statistics
-   */
   async getUserStats(userId: number) {
     // Total earnings
     const [earningsResult] = await this.db

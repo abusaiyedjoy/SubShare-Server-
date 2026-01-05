@@ -7,9 +7,6 @@ import { Env } from '../../db';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  /**
-   * Register a new user
-   */
   register = async (c: Context<{ Bindings: Env }>) => {
     try {
       const body = await c.req.json();
@@ -20,9 +17,6 @@ export class AuthController {
     }
   };
 
-  /**
-   * Login user
-   */
   login = async (c: Context<{ Bindings: Env }>) => {
     try {
       const body = await c.req.json();
@@ -33,9 +27,7 @@ export class AuthController {
     }
   };
 
-  /**
-   * Get current authenticated user
-   */
+
   me = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -46,9 +38,6 @@ export class AuthController {
     }
   };
 
-  /**
-   * Logout user (client-side token removal)
-   */
   logout = async (c: Context<{ Bindings: Env }>) => {
     return successResponse(c, null, 'Logout successful');
   };

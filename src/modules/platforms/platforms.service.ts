@@ -18,9 +18,6 @@ export interface UpdatePlatformParams {
 export class PlatformsService {
   constructor(private db: Database) {}
 
-  /**
-   * Get all platforms
-   */
   async getAllPlatforms(activeOnly: boolean = false) {
     let query = this.db
       .select({
@@ -47,9 +44,6 @@ export class PlatformsService {
     return platforms;
   }
 
-  /**
-   * Get platform by ID
-   */
   async getPlatformById(platformId: number) {
     const [platform] = await this.db
       .select({
@@ -71,9 +65,6 @@ export class PlatformsService {
     return platform;
   }
 
-  /**
-   * Create a new platform
-   */
   async createPlatform(params: CreatePlatformParams) {
     // Check if platform with same name exists
     const [existing] = await this.db
@@ -100,9 +91,6 @@ export class PlatformsService {
     return platform;
   }
 
-  /**
-   * Update platform
-   */
   async updatePlatform(platformId: number, params: UpdatePlatformParams) {
     // Check if platform exists
     const [existing] = await this.db
@@ -147,9 +135,6 @@ export class PlatformsService {
     return updated;
   }
 
-  /**
-   * Verify/Activate platform (admin)
-   */
   async verifyPlatform(platformId: number, isActive: boolean) {
     const [platform] = await this.db
       .select()
@@ -172,9 +157,6 @@ export class PlatformsService {
     return updated;
   }
 
-  /**
-   * Delete platform (soft delete by deactivating)
-   */
   async deletePlatform(platformId: number) {
     const [platform] = await this.db
       .select()
@@ -197,9 +179,6 @@ export class PlatformsService {
     return { message: 'Platform deleted successfully' };
   }
 
-  /**
-   * Search platforms by name
-   */
   async searchPlatforms(searchTerm: string, activeOnly: boolean = false) {
     let query = this.db
       .select({

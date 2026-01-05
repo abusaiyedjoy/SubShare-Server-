@@ -6,9 +6,7 @@ import { CreateTransactionParams, TransactionFilters } from '../types/transactio
 export class TransactionService {
   constructor(private db: Database) {}
 
-  /**
-   * Create a new transaction
-   */
+
   async createTransaction(params: CreateTransactionParams): Promise<number> {
     const [transaction] = await this.db
       .insert(transactions)
@@ -29,9 +27,7 @@ export class TransactionService {
     return transaction.id;
   }
 
-  /**
-   * Update user balance
-   */
+
   async updateUserBalance(userId: number, amount: number): Promise<void> {
     await this.db
       .update(users)
@@ -42,9 +38,6 @@ export class TransactionService {
       .where(eq(users.id, userId));
   }
 
-  /**
-   * Add funds to user wallet
-   */
   async addFunds(userId: number, amount: number, notes?: string): Promise<void> {
     const [user] = await this.db
       .select({ balance: users.balance })
@@ -68,9 +61,7 @@ export class TransactionService {
     });
   }
 
-  /**
-   * Deduct funds from user wallet
-   */
+
   async deductFunds(
     userId: number,
     amount: number,
@@ -105,9 +96,6 @@ export class TransactionService {
     });
   }
 
-  /**
-   * Process earning for subscription owner
-   */
   async processEarning(
     userId: number,
     amount: number,
@@ -137,9 +125,6 @@ export class TransactionService {
     });
   }
 
-  /**
-   * Process admin commission
-   */
   async processAdminCommission(
     adminId: number,
     amount: number,
@@ -171,9 +156,7 @@ export class TransactionService {
     });
   }
 
-  /**
-   * Get user transactions
-   */
+
   async getUserTransactions(userId: number, limit: number = 50) {
     return await this.db
       .select()
@@ -183,9 +166,7 @@ export class TransactionService {
       .limit(limit);
   }
 
-  /**
-   * Get all transactions with filters (admin)
-   */
+
   async getAllTransactions(filters?: TransactionFilters, limit: number = 100) {
     let query = this.db.select().from(transactions);
 
@@ -204,9 +185,7 @@ export class TransactionService {
     return await query.orderBy(desc(transactions.created_at)).limit(limit);
   }
 
-  /**
-   * Get transaction by ID
-   */
+
   async getTransactionById(id: number) {
     const [transaction] = await this.db
       .select()

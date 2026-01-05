@@ -7,9 +7,6 @@ import { Env } from '../../db';
 export class PlatformsController {
   constructor(private platformsService: PlatformsService) {}
 
-  /**
-   * Get all platforms
-   */
   getAllPlatforms = async (c: Context<{ Bindings: Env }>) => {
     try {
       const activeOnly = c.req.query('active_only') === 'true';
@@ -20,9 +17,6 @@ export class PlatformsController {
     }
   };
 
-  /**
-   * Get platform by ID
-   */
   getPlatformById = async (c: Context<{ Bindings: Env }>) => {
     try {
       const platformId = parseInt(c.req.param('id'));
@@ -33,9 +27,7 @@ export class PlatformsController {
     }
   };
 
-  /**
-   * Create platform (admin)
-   */
+
   createPlatform = async (c: Context<{ Bindings: Env }>) => {
     try {
       const admin = getAuthUser(c);
@@ -53,9 +45,6 @@ export class PlatformsController {
     }
   };
 
-  /**
-   * Update platform (admin)
-   */
   updatePlatform = async (c: Context<{ Bindings: Env }>) => {
     try {
       const platformId = parseInt(c.req.param('id'));
@@ -74,9 +63,6 @@ export class PlatformsController {
     }
   };
 
-  /**
-   * Verify platform (admin)
-   */
   verifyPlatform = async (c: Context<{ Bindings: Env }>) => {
     try {
       const platformId = parseInt(c.req.param('id'));
@@ -93,9 +79,6 @@ export class PlatformsController {
     }
   };
 
-  /**
-   * Delete platform (admin)
-   */
   deletePlatform = async (c: Context<{ Bindings: Env }>) => {
     try {
       const platformId = parseInt(c.req.param('id'));
@@ -106,9 +89,6 @@ export class PlatformsController {
     }
   };
 
-  /**
-   * Search platforms
-   */
   searchPlatforms = async (c: Context<{ Bindings: Env }>) => {
     try {
       const searchTerm = c.req.query('q') || '';

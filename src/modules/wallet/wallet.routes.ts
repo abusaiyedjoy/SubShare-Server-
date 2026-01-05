@@ -14,7 +14,6 @@ export function createWalletRoutes() {
   // All wallet routes require authentication
   router.use('*', authMiddleware);
 
-  // User routes
   router.post('/topup-request', validateRequest(topupRequestSchema), async (c) => {
     const db = getDb(c.env);
     const transactionService = new TransactionService(db);
@@ -47,7 +46,6 @@ export function createWalletRoutes() {
     return walletController.cancelTopupRequest(c);
   });
 
-  // Admin routes
   router.get('/admin/topup-requests', adminMiddleware, async (c) => {
     const db = getDb(c.env);
     const transactionService = new TransactionService(db);

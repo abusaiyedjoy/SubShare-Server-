@@ -7,9 +7,6 @@ import { Env } from '../../db';
 export class SubscriptionsController {
   constructor(private subscriptionsService: SubscriptionsService) {}
 
-  /**
-   * Get all subscriptions
-   */
   getAllSubscriptions = async (c: Context<{ Bindings: Env }>) => {
     try {
       const platformId = c.req.query('platform_id');
@@ -28,9 +25,6 @@ export class SubscriptionsController {
     }
   };
 
-  /**
-   * Get subscription by ID
-   */
   getSubscriptionById = async (c: Context<{ Bindings: Env }>) => {
     try {
       const subscriptionId = parseInt(c.req.param('id'));
@@ -41,9 +35,7 @@ export class SubscriptionsController {
     }
   };
 
-  /**
-   * Create shared subscription
-   */
+
   createSubscription = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -69,9 +61,6 @@ export class SubscriptionsController {
     }
   };
 
-  /**
-   * Update subscription
-   */
   updateSubscription = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -95,9 +84,7 @@ export class SubscriptionsController {
     }
   };
 
-  /**
-   * Delete subscription
-   */
+
   deleteSubscription = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -114,9 +101,7 @@ export class SubscriptionsController {
     }
   };
 
-  /**
-   * Unlock/Purchase subscription
-   */
+
   unlockSubscription = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);
@@ -135,9 +120,7 @@ export class SubscriptionsController {
     }
   };
 
-  /**
-   * Get credentials
-   */
+
   getCredentials = async (c: Context<{ Bindings: Env }>) => {
     try {
       const user = getAuthUser(c);

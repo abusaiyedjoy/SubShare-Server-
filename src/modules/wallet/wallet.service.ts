@@ -16,9 +16,7 @@ export class WalletService {
     private transactionService: TransactionService
   ) {}
 
-  /**
-   * Create a topup request
-   */
+
   async createTopupRequest(params: CreateTopupRequestParams) {
     // Check if transaction ID already exists
     const [existing] = await this.db
@@ -45,9 +43,6 @@ export class WalletService {
     return request;
   }
 
-  /**
-   * Get user's topup requests
-   */
   async getUserTopupRequests(userId: number, limit: number = 50) {
     const requests = await this.db
       .select({
@@ -68,9 +63,7 @@ export class WalletService {
     return requests;
   }
 
-  /**
-   * Get specific topup request
-   */
+
   async getTopupRequestById(requestId: number, userId?: number) {
     let query = this.db
       .select({
@@ -105,9 +98,7 @@ export class WalletService {
     return request;
   }
 
-  /**
-   * Get all topup requests (admin)
-   */
+
   async getAllTopupRequests(status?: string, limit: number = 100) {
     let query = this.db
       .select({
@@ -136,9 +127,6 @@ export class WalletService {
     return requests;
   }
 
-  /**
-   * Approve topup request (admin)
-   */
   async approveTopupRequest(
     requestId: number,
     adminId: number,
@@ -179,9 +167,7 @@ export class WalletService {
     return { message: 'Topup request approved and funds added' };
   }
 
-  /**
-   * Reject topup request (admin)
-   */
+
   async rejectTopupRequest(
     requestId: number,
     adminId: number,
@@ -215,9 +201,7 @@ export class WalletService {
     return { message: 'Topup request rejected' };
   }
 
-  /**
-   * Cancel topup request (user)
-   */
+
   async cancelTopupRequest(requestId: number, userId: number) {
     // Get request details
     const [request] = await this.db
