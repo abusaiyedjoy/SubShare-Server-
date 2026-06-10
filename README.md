@@ -118,8 +118,10 @@ Set in `wrangler.json`:
 Email: abusaiyedjoy1@gmail.com
 Password: 12345678910
 
-License
-MIT
+## User Credentials
+Email: fahim@gmail.com
+Password: fahim3
+
 
 ---
 
